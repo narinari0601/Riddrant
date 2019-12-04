@@ -23,33 +23,16 @@ public class GamePlayManager : MonoBehaviour
     private TalkTextUI talkText;
     private PauseUI pauseScript;
     private GameObject pauseUIObj;
+    
 
     //ステージ関連
-    //Inspectorに複数データを表示するためのクラス
-    //[System.SerializableAttribute]
-    //public class StageFlagList
-    //{
-    //    public List<string> flags = new List<string>();
-
-    //    public StageFlagList(List<string> list)
-    //    {
-    //        flags = list;
-    //    }
-    //}
-
-    //[SerializeField, Header("ステージ名リスト")]
-    //private List<string> stageNames = new List<string>();
-
-    //[SerializeField, Header("各ステージのフラグリスト")]
-    //private List<StageFlagList> stageFlagList = new List<StageFlagList>();  //ゲーム全体のステージフラグ管理リスト
-
     [SerializeField]
     private List<string> stagePrefabNameList = new List<string>();
 
     [SerializeField]
     private List<Vector3> stagePrefabPosList = new List<Vector3>();
 
-    [SerializeField,Header("中身確認用")]
+    //[SerializeField,Header("中身確認用")]
     private GameObject[] stageObjctArray;
 
     private string stageFolderName;
@@ -62,30 +45,20 @@ public class GamePlayManager : MonoBehaviour
 
     private int stageValue;  //ステージ数
 
+
     //player関連
     private GameObject player;
     private PlayerController pc;
 
     [SerializeField,Header("一番最初のスタート位置")]
     private Vector3 playerStartPos = Vector3.zero;
-
-    //[SerializeField, Header("各ステージのplayerのリスポーン位置")]
-    //private List<Vector3> playerSpawnPosList = new List<Vector3>();
-
+    
     private Vector3 playerSpawnPos ;
-    
 
-    //[System.SerializableAttribute]
-    //public class StageInitItemList
-    //{
-    //    public List<GameObject> items = new List<GameObject>();
+    [SerializeField,Header("ゲーム開始時のメッセージ")]
+    private string[] startMessage = new string[0];
 
-    //    public StageInitItemList(List<GameObject> list)
-    //    {
-    //        items = list;
-    //    }
-    //}
-    
+    private bool isStartMessage; //スタートメッセージが読まれたらtrue
 
 
     private bool isOption = false;  //オプション中ならtrue
@@ -148,6 +121,10 @@ public class GamePlayManager : MonoBehaviour
 
         //1番最初の位置のみここで指定
         player.transform.position = playerStartPos;
+
+        state = GameState.Talk;
+        isStartMessage = false;
+        
     }
 
 
@@ -222,6 +199,13 @@ public class GamePlayManager : MonoBehaviour
 
     void Update()
     {
+        if (!isStartMessage)
+        {
+            talkText.IsTalk = true;
+            talkText.MainMessages = startMessage;
+            isStartMessage = true;
+        }
+
         if (State == GameState.Play)
         {
             pauseScript.PauseStart();

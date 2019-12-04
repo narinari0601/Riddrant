@@ -13,6 +13,7 @@ TagManager:
   - BigCamera
   - Block
   - GoalZone
+  - PlayerFront
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Enemy
   - Door
   - BrakePlace
-  - 
+  - PlayerFront
   - 
   - 
   - 

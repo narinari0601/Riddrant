@@ -46,6 +46,8 @@ public class EnemyMovement : MonoBehaviour
 
     bool isGameoverFlag;
 
+    private bool isChaseFlag;  //追いかけられる状態ならtrue
+
     public enum EnemyState
     {
         Idle,Walk,Found
@@ -72,6 +74,8 @@ public class EnemyMovement : MonoBehaviour
         isPlayerFound = false;
 
         isGameoverFlag = false;
+
+        isChaseFlag = false;
     }
 
     // Update is called once per frame

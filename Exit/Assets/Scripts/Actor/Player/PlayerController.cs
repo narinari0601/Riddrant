@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
     void SoundWalk()
     {
-        audioSource.clip = audioClips[1]; 
+        //audioSource.clip = audioClips[1]; 
     }
 
     void ItemChange()

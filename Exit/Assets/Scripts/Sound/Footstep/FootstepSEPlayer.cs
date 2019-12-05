@@ -10,15 +10,13 @@ public class FootstepSEPlayer : MonoBehaviour
     [SerializeField] float pitchRange = 0.1f;
 
     protected AudioSource source;
-
-    PlayerController playerController;
+    
     
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         source = GetComponents<AudioSource>()[0];
-
-        playerController = GetComponent<PlayerController>();
+        
     }
 
     public void PlayFootstepSE()

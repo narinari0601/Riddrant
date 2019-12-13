@@ -21,6 +21,18 @@ public class FootstepSEPlayer : MonoBehaviour
 
     public void PlayFootstepSE()
     {
+        //source = GetComponents<AudioSource>()[0];
+
+        if (randomizePitch)
+            source.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
+
+        source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+    }
+
+    public void Walk()
+    {
+        //source = GetComponents<AudioSource>()[1];
+
         if (randomizePitch)
             source.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
 

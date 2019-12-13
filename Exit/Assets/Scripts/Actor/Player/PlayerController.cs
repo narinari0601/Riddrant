@@ -198,8 +198,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton0) ||
             Input.GetMouseButtonDown(0))
         {
-
+            //選択できるオブジェクトがなかったらreturn
             if (selectObj == null)
+                return;
+
+            //選択できない状態だったらreturn
+            if (!selectObj.GetComponent<PlacedObj>().IsSelect)
                 return;
 
             if (selectObj.GetComponent<PlacedObjParameter>().GoalObj)

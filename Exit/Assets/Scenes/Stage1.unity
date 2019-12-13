@@ -259,7 +259,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 186313565, guid: 83800fd11ea8259428901fc6534a8472, type: 3}
+    - target: {fileID: 5369289466099879092, guid: 83800fd11ea8259428901fc6534a8472,
+        type: 3}
       propertyPath: FadeUI
       value: 
       objectReference: {fileID: 760199480}
@@ -1616,6 +1617,18 @@ PrefabInstance:
         type: 3}
       propertyPath: randomizePitch
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117000077, guid: 8b904681adb2cba45b97233ac6d9d5c9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117000077, guid: 8b904681adb2cba45b97233ac6d9d5c9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 329680725, guid: 8b904681adb2cba45b97233ac6d9d5c9, type: 3}
+      propertyPath: messages.Array.data[0]
+      value: "\u3088\u304F\u898B\u308B\u3068\u58C1\u8CEA\u304C\u9055\u3046\u6C17\u304C\u3059\u308B"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b904681adb2cba45b97233ac6d9d5c9, type: 3}

@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
     {
         //player = GameObject.FindGameObjectWithTag("Player");//player関連
         player = GamePlayManager.instance.Player;
-        playerController = player.GetComponent<PlayerController>();//player関連
+        playerController = GamePlayManager.instance.PC;//player関連
         target = player.transform;//player関連
 
         agent = GetComponent<NavMeshAgent>();
@@ -132,6 +132,8 @@ public class EnemyMovement : MonoBehaviour
             agent.SetDestination(currentTargetPos);
             state = EnemyState.Found;
         }
+
+        
 
         StateAnimation();
 

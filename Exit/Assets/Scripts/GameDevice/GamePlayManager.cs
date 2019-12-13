@@ -310,4 +310,9 @@ public class GamePlayManager : MonoBehaviour
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
         SceneManager.LoadScene("Title");
     }
+
+    public void GameEndInstant()
+    {
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+    }
 }

@@ -33,10 +33,10 @@ public class FootstepSEPlayer : MonoBehaviour
     {
         //source = GetComponents<AudioSource>()[1];
 
-        if (randomizePitch)
-            source.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
+        //if (randomizePitch)
+        //    source.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
 
-        source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+        //source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
     }
 
     // Update is called once per frame

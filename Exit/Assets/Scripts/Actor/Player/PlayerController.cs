@@ -31,8 +31,10 @@ public class PlayerController : MonoBehaviour
     public bool isWalk;
 
     public bool isDead;//playerが死んだ
-    //↑
-    
+                       //↑
+
+    [SerializeField]
+    private Vector3 debugPos = Vector3.zero;
     
     
     public GameObject SelectObj { get => selectObj; set => selectObj = value; }
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize()
     {
-        mainCamera.gameObject.GetComponent<CameraController>().RotateInitialize();
+        //mainCamera.gameObject.GetComponent<CameraController>().RotateInitialize();
 
         itemNum = 0;
         
@@ -111,7 +113,12 @@ public class PlayerController : MonoBehaviour
         {
 
         }
-        
+
+
+        if (Input.GetKey(KeyCode.T) && Input.GetKey(KeyCode.M))
+        {
+            transform.position = debugPos;
+        }
             
     }
 

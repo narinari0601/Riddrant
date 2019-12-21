@@ -129,8 +129,13 @@ public class CameraController : MonoBehaviour
         
     }
 
-    public void RotateInitialize()
+    public void RotateInitialize(float angle)
     {
-        roteuler = Vector3.zero;
+        //transform.localEulerAngles = Vector3.zero;
+        //roteuler.y = angle;
+        //transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+        //transform.localEulerAngles = new Vector3(0.0f, angle, 0.0f);
+        //transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+        transform.localRotation = Quaternion.Euler(0.0f, angle, 0.0f);
     }
 }

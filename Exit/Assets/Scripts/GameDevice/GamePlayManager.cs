@@ -55,6 +55,8 @@ public class GamePlayManager : MonoBehaviour
     
     private Vector3 playerSpawnPos ;
 
+    private float playerSpawnRote;
+
     [SerializeField,Header("ゲーム開始時のメッセージ")]
     private string[] startMessage = new string[0];
 
@@ -110,6 +112,7 @@ public class GamePlayManager : MonoBehaviour
         stageValue = stagePrefabNameList.Count;
 
         playerSpawnPos = Vector3.zero;
+        playerSpawnRote = 0;
 
         PlayerCreate();
         
@@ -191,9 +194,15 @@ public class GamePlayManager : MonoBehaviour
     {
         playerSpawnPos = currentStageScript.PlayerSpawnPos;
 
+        playerSpawnRote = currentStageScript.PlayerSpawnRotate;
+
         player.transform.position = playerSpawnPos;
 
+        //player.transform.localEulerAngles = new Vector3(0.0f, playerSpawnRote, 0.0f);
+
         pc.Initialize();
+
+        pc.MainCamera.GetComponent<CameraController>().RotateInitialize(playerSpawnRote);
         
     }
 

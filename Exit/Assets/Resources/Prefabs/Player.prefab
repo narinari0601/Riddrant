@@ -2104,6 +2104,7 @@ MonoBehaviour:
   - {fileID: 0}
   isWalk: 0
   isDead: 0
+  debugPos: {x: 155, y: 0, z: 17.8}
 --- !u!1 &8196738503563156800
 GameObject:
   m_ObjectHideFlags: 0

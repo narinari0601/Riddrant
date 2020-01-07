@@ -292,9 +292,10 @@ public class GamePlayManager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
-
+        var gameoverScript =gamePlayUI.GetComponent<GameOverUI>();
+        gameoverScript.GameOver();
     }
 
     

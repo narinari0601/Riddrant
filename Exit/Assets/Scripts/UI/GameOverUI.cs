@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
-    public GameObject gameoverObj = null;
+    [SerializeField]
+    private GameObject gameoverObj = null;
 
     void Start()
     {
@@ -17,15 +18,23 @@ public class GameOverUI : MonoBehaviour
     {
         var gameState = GamePlayManager.instance.State;
 
-        if (gameState == GamePlayManager.GameState.GameOver)
-        {
-            if (!gameoverObj.activeSelf)
-            {
-                gameoverObj.SetActive(true);
-            }
-        }
+        //if (gameState == GamePlayManager.GameState.GameOver)
+        //{
+        //    if (!gameoverObj.activeSelf)
+        //    {
+        //        gameoverObj.SetActive(true);
+        //    }
+        //}
 
-        else
+        //else
+        //{
+        //    if (gameoverObj.activeSelf)
+        //    {
+        //        gameoverObj.SetActive(false);
+        //    }
+        //}
+
+        if (gameState != GamePlayManager.GameState.GameOver)
         {
             if (gameoverObj.activeSelf)
             {
@@ -40,11 +49,26 @@ public class GameOverUI : MonoBehaviour
         //GamePlayManager.instance.PlayerCreate();
         GamePlayManager.instance.PlayerRespawn();
         GamePlayManager.instance.StageInitialize();
+        GamePlayManager.instance.PC.MainCamera.GetComponent<CameraController>().RoteCount = 0;
         
     }
 
     public void ReturnToTitle()
     {
         GamePlayManager.instance.GameEnd();
+    }
+
+
+    public void GameOver()
+    {
+        var gameState = GamePlayManager.instance.State;
+
+        if (gameState == GamePlayManager.GameState.GameOver)
+        {
+            if (!gameoverObj.activeSelf)
+            {
+                gameoverObj.SetActive(true);
+            }
+        }
     }
 }

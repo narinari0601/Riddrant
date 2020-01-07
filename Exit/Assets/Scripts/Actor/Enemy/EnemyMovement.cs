@@ -69,6 +69,8 @@ public class EnemyMovement : MonoBehaviour
 
     private Animator animator;
 
+    private bool isTouch;
+
     //public enum EnemyState
     //{
     //    Idle,Walk,Found
@@ -108,6 +110,7 @@ public class EnemyMovement : MonoBehaviour
         isLightOn = false;
         flashLight = GamePlayManager.instance.PC.GetComponentInChildren<FlashLightController>();
         animator = GetComponent<Animator>();
+        isTouch = false;
     }
 
     // Update is called once per frame
@@ -181,7 +184,12 @@ public class EnemyMovement : MonoBehaviour
         //}
         #endregion
 
-        Chase();
+        var gameState = GamePlayManager.instance.State;
+
+        if (gameState == GamePlayManager.GameState.Play)
+        {
+            Chase();
+        }
         
     }
 
@@ -208,6 +216,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void Chase()
     {
+        if (isTouch)
+            return;
+
         //敵とplayerの直線距離計算
         targetDistance = (target.transform.position - transform.position).magnitude;
 
@@ -284,6 +295,11 @@ public class EnemyMovement : MonoBehaviour
             }
 
             routeTargetNum++;
+        }
+
+        if (obj.tag == "Player")
+        {
+            isTouch = true;
         }
     }
 }

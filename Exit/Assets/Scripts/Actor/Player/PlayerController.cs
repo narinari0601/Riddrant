@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Vector3 debugPos = Vector3.zero;
+
+    private GameObject deadObj;
     
     
     public GameObject SelectObj { get => selectObj; set => selectObj = value; }
@@ -83,12 +85,12 @@ public class PlayerController : MonoBehaviour
     {
         var state = GamePlayManager.instance.State;
 
-        if (isDead)
-        {
-            rb.angularDrag = 100;  //敵とぶつかったら無理やりとめる
+        //if (isDead)
+        //{
+        //    rb.angularDrag = 100;  //敵とぶつかったら無理やりとめる
 
-            return;
-        }
+        //    return;
+        //}
 
         itemQuantity = itemList.Count;  //アイテムの数を取得
 
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
             SelectObject();
             ItemChange();
             UseItem();
-            
+
         }
 
         else if (state == GamePlayManager.GameState.Talk)
@@ -114,6 +116,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        else if (state == GamePlayManager.GameState.GameOver)
+        {
+            GameOverRote(deadObj);
+        }
 
         if (Input.GetKey(KeyCode.T) && Input.GetKey(KeyCode.M))
         {
@@ -330,6 +336,18 @@ public class PlayerController : MonoBehaviour
         }
         itemNum--;
     }
+
+    public void GameOverRote(GameObject enemy)
+    {
+        flashLight.SwitchOn();
+        var enemyPos = enemy.transform.position;
+        var dir = new Vector3(enemyPos.x, enemyPos.y, enemyPos.z) - MainCamera.transform.position;
+        dir.y -= enemyPos.y - MainCamera.transform.position.y;
+        var rote = Quaternion.LookRotation(dir);
+        MainCamera.GetComponent<CameraController>().DeadRotate(rote);
+
+        
+    }
     
 
     private void OnCollisionEnter(Collision col)
@@ -338,6 +356,8 @@ public class PlayerController : MonoBehaviour
         {
             //isDead = true;
             GamePlayManager.instance.State = GamePlayManager.GameState.GameOver;
+            deadObj = col.gameObject;
+
         }
 
         if (col.gameObject.tag == "GoalZone")

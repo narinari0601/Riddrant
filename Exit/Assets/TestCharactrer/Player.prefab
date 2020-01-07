@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916918832765199445}
   - component: {fileID: 916918832765199444}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: PlayerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,8 +538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da33a32389c60e74a81f2f78781e65c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  se:
-  - {fileID: 8300000, guid: b0c7b143935f917429deed40b347e3c7, type: 3}
 --- !u!114 &4986262750307964498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,8 +552,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4.5
   itemList: []
-  mainCamera: {fileID: 0}
-  flashLight: {fileID: 0}
   audioClips:
   - {fileID: 0}
   - {fileID: 0}
@@ -563,6 +559,7 @@ MonoBehaviour:
   - {fileID: 0}
   isWalk: 0
   isDead: 0
+  debugPos: {x: 0, y: 0, z: 0}
 --- !u!1 &916918832779734153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,7 +2619,7 @@ GameObject:
   - component: {fileID: 916918833288924004}
   - component: {fileID: 916918833288924005}
   - component: {fileID: 916918833288924002}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ObjJudge
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2668,4 +2665,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e661723193f24041b6692fdf5913d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 0}

@@ -43,7 +43,16 @@ public class CameraController : MonoBehaviour
     [Header("揺れ幅")]
     public float rubHeight = 20f;
 
+    [SerializeField,Header("ゲームオーバー時の回転速度")]
+    private float roteSpeed = 0;
+
+    [SerializeField,Header("ゲームオーバーUIが出てくるまでの時間")]
+    private float roteTime = 0;
+
+    private float roteCount;
+
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
+    public float RoteCount { get => roteCount; set => roteCount = value; }
 
     void Start()
     {
@@ -62,6 +71,8 @@ public class CameraController : MonoBehaviour
         pVec3 = playerTransform.transform.position + offset;
 
         playerCont = playerObj.GetComponent<PlayerController>();
+
+        roteCount = 0;
     }
     
 
@@ -74,7 +85,7 @@ public class CameraController : MonoBehaviour
         if (GamePlayManager.instance.State == GamePlayManager.GameState.Play)
         {
             CameraMouseRotation();
-
+        }
 
             //かん↓  慣性かけてる
             pVec3 = playerTransform.transform.position + offset;
@@ -93,7 +104,7 @@ public class CameraController : MonoBehaviour
 
             transform.position = playerPos;
             //かん↑
-        }
+        
     }
 
     private void CameraMouseRotation()
@@ -137,5 +148,29 @@ public class CameraController : MonoBehaviour
         //transform.localEulerAngles = new Vector3(0.0f, angle, 0.0f);
         //transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
         transform.localRotation = Quaternion.Euler(0.0f, angle, 0.0f);
+    }
+
+    //public void DeadRotate(Vector3 dir)
+    //{
+    //    transform.rotation = Quaternion.LookRotation(dir);
+    //}
+
+    //public void DeadRotate(Quaternion dir)
+    //{
+
+    //    transform.localRotation = dir;
+    //}
+
+    public void DeadRotate(Quaternion dir)
+    {
+        roteCount += Time.deltaTime;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, roteSpeed);
+
+        if (roteCount > roteTime)
+        {
+            //GamePlayManager.instance.State = GamePlayManager.GameState.GameOver;
+            GamePlayManager.instance.GameOver();
+        }
     }
 }
